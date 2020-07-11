@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+  <script>
+    
+    let randomNum;
+    let playerChoice;
+    let playerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
+    
+
+    function computerPlay(){
+        randomNum = Math.random();
+        if(randomNum <= .3333){
+            return "ROCK";
+        }else if(randomNum <= .6666){
+            return "PAPER";
+        }else{
+            return "SCISSORS";
+        }
+    }
+
+    let computerSelection = computerPlay();
+
+   let playGame = function(playerSelection, computerSelection){
+        playerChoice = prompt("Please enter Rock, Paper, or Scissors");
+        playerSelection = (playerChoice) ? playerChoice.toUpperCase() : playerChoice;
+        console.log(playerSelection);
+        console.log(computerSelection);
+        if(!playerChoice){
+            return "Please enter Rock, Paper, or Scissors!";
+        }else if(playerSelection != "ROCK" || "PAPER" || "SCISSORS"){
+            return "Please check your spelling!";
+        }else if(playerSelection === "ROCK" && computerSelection === "PAPER"){
+            computerScore++;
+            return "You lose! Paper beats Rock.";
+        }else if(playerSelection === "SCISSORS" && computerSelection === "PAPER"){
+            playerScore++;
+            return "You win! Scissors beats Paper.";
+        }else if(playerSelection === "PAPER" && computerSelection === "SCISSORS"){
+            computerScore++;
+            return "You lose! Scissors beats Paper.";
+        }else if(playerSelection === "ROCK" && computerSelection === "SCISSORS"){
+            playerScore++;
+            return "You win! Rock beats Scissors.";
+        }else if(playerSelection === "SCISSORS" && computerSelection === "ROCK"){
+            computerScore++;
+            return "You lose! Rock beats Scissors.";
+        }else if(playerSelection === "PAPER" && computerSelection === "ROCK"){
+            playerScore++;
+            return "You win! Paper beats Rock.";
+        }else{
+            return "Tie! Go again.";
+        }
+    }
+
+    function playFiveTimes(){
+        for(let num = 1; num <= 5; num++){
+            let computerSelectionLoop = computerPlay();
+            console.log(playGame(playerSelection, computerSelectionLoop));
+            console.log(playerScore);
+            console.log(computerScore);
+        }
+    }
+    
+    playFiveTimes();
+
+    function checkWinner(){
+        if(playerScore > computerScore){
+            return "Nice! You ultimately won the game!";
+        }else if(playerScore === 0 && computerScore === 0){
+            return "Try again!";
+        }else if(playerScore === computerScore){
+            return "It's a tie! Play again if you want.";
+        }else{
+            return "Sorry! You ultimately lost the game.";
+        }
+    }  
+    console.log(checkWinner());
+  </script>
+</body>
+</html>
