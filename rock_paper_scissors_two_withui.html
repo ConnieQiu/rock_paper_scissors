@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <div id="button-div">
+<button type="submit" id="ROCK">Rock</button>
+<button type="submit" id="PAPER">Paper</button>
+<button type="submit" id="SCISSORS">Scissors</button>
+    </div>
+    <div id="results">
+        <p id="playerScore"></p>
+        <p id="computerScore"></p>
+    </div>
+  <script>
+    
+    let randomNum;
+    let playerChoice;
+    let playerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
+    
+
+    function computerPlay(){
+        randomNum = Math.random();
+        if(randomNum <= .3333){
+            return "ROCK";
+        }else if(randomNum <= .6666){
+            return "PAPER";
+        }else{
+            return "SCISSORS";
+        }
+    }
+
+    let computerSelection = computerPlay();
+
+    function playGame(playerSelection, computerSelection){
+        computerSelection = computerPlay();
+        console.log(playerSelection);
+        console.log(computerSelection);
+        console.log(playerScore);
+        console.log(computerScore);
+        if(playerSelection === "ROCK" && computerSelection === "PAPER"){
+            computerScore++;
+            alert("You lose! Paper beats Rock.");
+        }else if(playerSelection === "SCISSORS" && computerSelection === "PAPER"){
+            playerScore++;
+            alert("You win! Scissors beats Paper.");
+        }else if(playerSelection === "PAPER" && computerSelection === "SCISSORS"){
+            computerScore++;
+            alert("You lose! Scissors beats Paper.");
+        }else if(playerSelection === "ROCK" && computerSelection === "SCISSORS"){
+            playerScore++;
+            alert("You win! Rock beats Scissors.");
+        }else if(playerSelection === "SCISSORS" && computerSelection === "ROCK"){
+            computerScore++;
+            alert("You lose! Rock beats Scissors.");
+        }else if(playerSelection === "PAPER" && computerSelection === "ROCK"){
+            playerScore++;
+            alert("You win! Paper beats Rock.");
+        }else{
+            alert("Tie! Go again.");
+        }
+    }
+
+
+
+    function checkWinner(){
+        if(playerScore > computerScore){
+            return "Nice! You ultimately won the game!";
+        }else if(playerScore === 0 && computerScore === 0){
+            return "Try again!";
+        }else if(playerScore === computerScore){
+            return "It's a tie! Play again if you want.";
+        }else{
+            return "Sorry! You ultimately lost the game.";
+        }
+    }
+    
+    
+
+    document.getElementById("ROCK").addEventListener("click",function(){
+        let scoreCountPlayer = document.querySelector("p");
+        scoreCountPlayer.innerHTML = "Player Score: " + playerScore;
+
+        document.getElementById("computerScore").innerHTML = "Computer's Score: " + computerScore;
+
+        document.createElement('p').innerHTML = "The computer chose: " + computerSelection;
+        
+        playGame("ROCK", computerSelection);
+    });
+
+    document.getElementById("PAPER").addEventListener("click",function(){
+        playGame("PAPER", computerSelection);
+
+    });
+
+    document.getElementById("SCISSORS").addEventListener("click",function(){
+        playGame("SCISSORS", computerSelection);
+
+    });
+
+
+  </script>
+</body>
+</html>
