@@ -1,0 +1,46 @@
+
+    
+    h1{
+        color: #faf5fa;
+        text-align: center;
+        
+    }
+    body{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        display: block;
+    }
+
+    button{
+        background-color: pink;
+        margin: 10px 20px 10px 20px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100px;
+        border-width: 1px;
+    }
+
+    #button-div{
+        display: flex;
+        justify-content: center;
+        border: solid;
+        border-width: 2px;
+        border-color: gray;
+        border-radius: 5px;
+        width: 30vw;
+        margin: auto;
+        padding: 10px;
+    }
+
+    #scorekeeper{
+        text-align: center;
+        color: #faf5fa;
+        font-size: 25px;
+        text-decoration: bold;
+    }
+
+   button:hover{
+       background-color: #dce1e8;
+   }
+
+  
